@@ -13,4 +13,9 @@ class Infraccion extends Model
         'id',
         'cod_placa',
     ];
+
+    public function tipo(){
+        return $this->belongsTo(Tipo::class);
+    }
+
 }
