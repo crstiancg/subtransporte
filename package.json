@@ -15,5 +15,10 @@
         "tailwindcss": "^3.2.1",
         "vite": "^4.0.0",
         "vue": "^3.2.41"
+    },
+    "dependencies": {
+        "@vueform/slider": "^2.1.7",
+        "swiper": "^9.2.4",
+        "vue3-carousel": "^0.3.1"
     }
 }
