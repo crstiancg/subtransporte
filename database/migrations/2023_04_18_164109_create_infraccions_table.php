@@ -29,6 +29,7 @@ return new class extends Migration
             $table->enum('estado', ['base','dias','doc']);
             $table->string('fecha_inicio');
             $table->string('fecha_cierre');
+            $table->string('monto_final');
             $table->foreignId('codigo_id')->nullable()->constrained('tipos')->onDelete('cascade');
 
             $table->timestamps();

@@ -61,7 +61,7 @@
           </div>
         </form>
 
-        <div class="relative overflow-x-auto py-4" v-if="infraccion ? true :  hidden"> 
+        <div class="relative overflow-x-auto py-4" v-if="infraccion ? true :  hidden">
           <table
             class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
           >
@@ -73,13 +73,14 @@
                 <th scope="col" class="px-6 py-3">Placa</th>
                 <th scope="col" class="px-6 py-3">Papeleta</th>
                 <th scope="col" class="px-6 py-3">Licencia</th>
+                <th scope="col" class="px-6 py-3">Monto</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="infraccion in infraccion" :key="infraccion.id"
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
-             
+
               <td class="px-6 py-4">{{ infraccion.dato_conductor }}</td>
                 <td
                   scope="row"
@@ -88,6 +89,8 @@
                 </td>
                 <td class="px-6 py-4">{{ infraccion.cod_papeleta }}</td>
                 <td class="px-6 py-4">{{ infraccion.licencia }}</td>
+                <td class="px-6 py-4">{{ infraccion.monto_final }}</td>
+
               </tr>
             </tbody>
           </table>
@@ -97,7 +100,7 @@
     </div>
   </AuthenticatedLayout>
 </template>
-  
+
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head, Link, useForm, router } from "@inertiajs/vue3";

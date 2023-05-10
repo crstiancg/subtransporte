@@ -18,4 +18,19 @@ class Infraccion extends Model
         return $this->belongsTo(Tipo::class);
     }
 
+    public function calcularEstado():string
+    {
+        $n= rand(1, 100);
+        $placa1 ="PLACA";
+        $placa = $this->cod_placa;
+        $this->cod_placa=$placa1.strval($n);
+        $this->save();
+        return $this->cod_placa;
+    }
+    // public function cambiarEstado(){
+
+    // }
+
+
+
 }

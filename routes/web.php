@@ -3,10 +3,10 @@
 use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\InfraccionController;
 use App\Http\Controllers\ProfileController;
+use App\Jobs\TestJob;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +17,13 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::get('job',function(){
+    TestJob::dispatch();
+    TestJob::dispatch()->onQueue('secondary');
+    return response("Fin");
+});
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -39,5 +46,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('consulta', [ConsultaController::class, 'index'])->name('consulta.index');
+
+
 
 require __DIR__.'/auth.php';
