@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipos', function (Blueprint $table) {
+        Schema::create('beneficio_tipo', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo',100);
-            $table->text('descripcion')->nullable();
-            $table->decimal('porcentaje_base', 3,2);
-            $table->decimal('monto_base',5,2)->nullable();
+            $table->foreignId('beneficio_id')->constrained();
+            $table->foreignId('tipo_id')->constrained();
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipos');
+        Schema::dropIfExists('beneficio_tipo');
     }
 };

@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('fecha_inicio');
             $table->string('fecha_cierre');
             $table->string('monto_final');
-            $table->foreignId('codigo_id')->nullable()->constrained('tipos')->onDelete('cascade');
+            $table->foreignId('tipo_id')->nullable()->constrained();
 
             $table->timestamps();
         });

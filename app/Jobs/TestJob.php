@@ -30,7 +30,21 @@ class TestJob implements ShouldQueue
     {
         //
         sleep(10);
-        $infracion=Infraccion::find(4);
+        $uit = 4950;
+        $bases = Infraccion::where('estado', '=', 'base')->get();
+        foreach ($bases as $base) {
+
+            $tipo = $base->tipo;
+            $benefi = $base->tipo->beneficios->sortBy('orden')->first();
+            //dd();
+            $base->monto_final = ($uit * $tipo->porcentaje_base) * $benefi->descuento;
+            //cambiar estado
+            //$base->estado=$benefi->codigo;
+            $base->save();
+            //dd($base);
+        }
+
+        $infracion = Infraccion::find(4);
         $infracion->calcularEstado();
         echo "job dispached<br>";
         Log::info("job dispached");

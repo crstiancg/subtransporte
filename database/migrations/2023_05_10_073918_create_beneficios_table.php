@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipos', function (Blueprint $table) {
+        Schema::create('beneficios', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo',100);
+            $table->string('codigo',10);
+            $table->integer('orden');
             $table->text('descripcion')->nullable();
-            $table->decimal('porcentaje_base', 3,2);
-            $table->decimal('monto_base',5,2)->nullable();
+            $table->decimal('descuento',3,2);
+            $table->string('condicion')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipos');
+        Schema::dropIfExists('beneficios');
     }
 };

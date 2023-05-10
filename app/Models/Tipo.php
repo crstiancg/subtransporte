@@ -15,6 +15,10 @@ class Tipo extends Model
     }
 
     public function descuento(){
-        
+
+    }
+
+    public function beneficios(){
+        return $this->belongsToMany(Beneficio::class);
     }
 }

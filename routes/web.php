@@ -4,6 +4,7 @@ use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\InfraccionController;
 use App\Http\Controllers\ProfileController;
 use App\Jobs\TestJob;
+use App\Models\Infraccion;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -20,8 +21,17 @@ use Inertia\Inertia;
 
 
 Route::get('job',function(){
-    TestJob::dispatch();
-    TestJob::dispatch()->onQueue('secondary');
+    $uit=4950;
+    $bases=Infraccion::where('estado','=','base')->get();
+    foreach($bases as $base){
+
+        $tipo=$base->tipo;
+        $benefi=$base->tipo->beneficios->sortBy('orden')->first();
+        //dd();
+        $base->monto_final=($uit*$tipo->porcentaje_base)*$benefi->descuento;
+        $base->save();
+        //dd($base);
+    }
     return response("Fin");
 });
 
