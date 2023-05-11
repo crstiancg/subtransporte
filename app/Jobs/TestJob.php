@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Infraccion;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -37,10 +38,27 @@ class TestJob implements ShouldQueue
             $tipo = $base->tipo;
             $benefi = $base->tipo->beneficios->sortBy('orden')->first();
             //dd();
-            $base->monto_final = ($uit * $tipo->porcentaje_base) * $benefi->descuento;
+            $condicion = $base->tipo->beneficios->sortBy('orden')->first()->condicion;
+
+            switch ($condicion) {
+                case "cond9":
+                    if (ben9()) {
+                        $base->monto_final = ($uit * $tipo->porcentaje_base) * $benefi->descuento;
+                        $base->save();
+                    } else {
+                        // $base->estado = $benefi->codigo;
+                        $base->estado = "dias";
+                        $base->save();
+                    }
+
+
+                    break;
+            }
+
+
             //cambiar estado
             //$base->estado=$benefi->codigo;
-            $base->save();
+            //$base->save();
             //dd($base);
         }
 
@@ -48,5 +66,15 @@ class TestJob implements ShouldQueue
         $infracion->calcularEstado();
         echo "job dispached<br>";
         Log::info("job dispached");
+    }
+
+
+    function ben9(string $fechaIncidente):bool
+    {
+        $fechaIncidente = Carbon::create('2023-05-4 23:26:11.223');
+        $fechaActual = Carbon::now();
+
+        //echo "hola";
+        return $fechaActual->diffInDays($fechaIncidente)>=5?false:true;
     }
 }
