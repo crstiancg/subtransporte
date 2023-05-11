@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('codigo',100);
             $table->text('descripcion')->nullable();
-            $table->decimal('porcentaje_base', 3,2);
+            $table->decimal('porcentaje_base', 4,3);
             $table->decimal('monto_base',5,2)->nullable();
             $table->timestamps();
         });
