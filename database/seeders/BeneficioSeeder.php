@@ -16,11 +16,11 @@ class BeneficioSeeder extends Seeder
     {
         //
         $beneficio = [
-            ['id' => 1, 'codigo' => 'DESC17', 'orden' => 10, 'descuento' => 0.17],
-            ['id' => 2, 'codigo' => 'DESC33', 'orden' => 20, 'descuento' => 0.33],
-            ['id' => 3, 'codigo' => 'DESC50', 'orden' => 30, 'descuento' => 0.50],
-            ['id' => 4, 'codigo' => 'DESC70', 'orden' => 40, 'descuento' => 0.70],
-            ['id' => 5, 'codigo' => 'DESC100', 'orden' => 50, 'descuento' => 1],
+            ['id' => 1, 'codigo' => 'DESC17', 'orden' => 10, 'descuento' => 0.17, 'condicion' => 'DESC17'],
+            ['id' => 2, 'codigo' => 'DESC33', 'orden' => 20, 'descuento' => 0.33, 'condicion' => 'DESC33'],
+            ['id' => 3, 'codigo' => 'DESC50', 'orden' => 30, 'descuento' => 0.50, 'condicion' => 'DESC50'],
+            ['id' => 4, 'codigo' => 'DESC70', 'orden' => 40, 'descuento' => 0.70, 'condicion' => 'DESC70'],
+            ['id' => 5, 'codigo' => 'DESC100', 'orden' => 50, 'descuento' => 1, 'condicion' => 'DESC100'],
         ];
 
         foreach ($beneficio as $ben) {

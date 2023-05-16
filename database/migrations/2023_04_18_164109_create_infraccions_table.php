@@ -13,23 +13,23 @@ return new class extends Migration
     {
         Schema::create('infraccions', function (Blueprint $table) {
             $table->id();
-            $table->string('cod_papeleta');
-            $table->string('cod_placa');
-            $table->string('dato_conductor');
-            $table->string('cod_infraccion');
-            $table->string('fecha_infraccion');
-            $table->string('hora_infraccion');
-            $table->string('licencia');
-            $table->string('cod_registro');
-            $table->string('observacion');
-            $table->string('cip');
-            $table->string('lugar');
-            $table->string('cuadra');
-            $table->string('tipoInf');
-            $table->enum('estado', ['base','dias','doc']);
-            $table->string('fecha_inicio');
-            $table->string('fecha_cierre');
-            $table->string('monto_final');
+            $table->string('cod_papeleta')->nullable();
+            $table->string('cod_placa')->nullable();
+            $table->string('dato_conductor')->nullable();
+            $table->string('cod_infraccion')->nullable();
+            $table->string('fecha_infraccion')->nullable();
+            $table->string('hora_infraccion')->nullable();
+            $table->string('licencia')->nullable();
+            $table->string('cod_registro')->nullable();
+            $table->string('observacion')->nullable();
+            $table->string('cip')->nullable();
+            $table->string('lugar')->nullable();
+            $table->string('cuadra')->nullable();
+            $table->string('tipoInf')->nullable();
+            $table->enum('estado', ['base','dias','doc'])->nullable();
+            $table->string('fecha_inicio')->nullable();
+            $table->string('fecha_cierre')->nullable();
+            $table->string('monto_final')->nullable();
             $table->foreignId('tipo_id')->nullable()->constrained();
 
             $table->timestamps();

@@ -24,6 +24,7 @@ class TestJob implements ShouldQueue
         //
     }
 
+    
     /**
      * Execute the job.
      */
@@ -41,8 +42,8 @@ class TestJob implements ShouldQueue
             $condicion = $base->tipo->beneficios->sortBy('orden')->first()->condicion;
 
             switch ($condicion) {
-                case "cond9":
-                    if (ben9()) {
+                case 'DESC17':
+                    if(ben9()) {
                         $base->monto_final = ($uit * $tipo->porcentaje_base) * $benefi->descuento;
                         $base->save();
                     } else {
@@ -54,8 +55,6 @@ class TestJob implements ShouldQueue
 
                     break;
             }
-
-
             //cambiar estado
             //$base->estado=$benefi->codigo;
             //$base->save();
@@ -68,8 +67,7 @@ class TestJob implements ShouldQueue
         Log::info("job dispached");
     }
 
-
-    function ben9(string $fechaIncidente):bool
+    function hola9(string $fechaIncidente):bool
     {
         $fechaIncidente = Carbon::create('2023-05-4 23:26:11.223');
         $fechaActual = Carbon::now();
@@ -77,4 +75,7 @@ class TestJob implements ShouldQueue
         //echo "hola";
         return $fechaActual->diffInDays($fechaIncidente)>=5?false:true;
     }
+
+
+    
 }
