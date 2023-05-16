@@ -22,7 +22,7 @@ use Carbon\Carbon;
 
 
 
-function ben9():bool
+function desc17():bool
 {
     $fechaIncidente = Carbon::create('2023-05-4 23:26:11.223');
     $fechaActual = Carbon::now();
@@ -41,8 +41,8 @@ Route::get('job',function(){
             $condicion = $base->tipo->beneficios->sortBy('orden')->first()->condicion;
 
             switch ($condicion) {
-                case "cond9":
-                    if (ben9()) {
+                case "DESC17":
+                    if (desc17()) {
                         $base->monto_final = ($uit * $tipo->porcentaje_base) * $benefi->descuento;
                         $base->save();
                     } else {

@@ -43,7 +43,7 @@ class TestJob implements ShouldQueue
 
             switch ($condicion) {
                 case 'DESC17':
-                    if(ben9()) {
+                    if(desc17()) {
                         $base->monto_final = ($uit * $tipo->porcentaje_base) * $benefi->descuento;
                         $base->save();
                     } else {
@@ -51,7 +51,25 @@ class TestJob implements ShouldQueue
                         $base->estado = "dias";
                         $base->save();
                     }
+                case 'DESC33':
+                    if(desc33()){
+                        $base->monto_final = ($base->monto_final * $benefi->descuento);
+                    }else {
+                        $base->estado = $benefi->codigo;
+                        $base->save();
+                    }
+                case 'DESC50':
+                    if(desc50()){
 
+                    }else{
+
+                    }
+                case 'DESC100':
+                    if(desc100()){
+
+                    }else{
+
+                    }
 
                     break;
             }
@@ -67,13 +85,28 @@ class TestJob implements ShouldQueue
         Log::info("job dispached");
     }
 
-    function hola9(string $fechaIncidente):bool
+    function desc17(string $fechaIncidente):bool
     {
         $fechaIncidente = Carbon::create('2023-05-4 23:26:11.223');
         $fechaActual = Carbon::now();
 
         //echo "hola";
         return $fechaActual->diffInDays($fechaIncidente)>=5?false:true;
+    }
+
+    function desc33():bool
+    {
+        $doc = $base->cod_registro();
+    }
+
+    function desc50():bool
+    {
+        
+    }
+
+    function desc100():bool
+    {
+
     }
 
 

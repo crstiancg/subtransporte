@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('lugar')->nullable();
             $table->string('cuadra')->nullable();
             $table->string('tipoInf')->nullable();
-            $table->enum('estado', ['base','dias','doc'])->nullable();
+            $table->string('estado')->nullable();
             $table->string('fecha_inicio')->nullable();
             $table->string('fecha_cierre')->nullable();
             $table->string('monto_final')->nullable();
