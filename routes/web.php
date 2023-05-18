@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\InfraccionController;
+use App\Http\Controllers\LicenciaController;
 use App\Http\Controllers\ProfileController;
 use App\Jobs\TestJob;
 use App\Models\Infraccion;
@@ -74,8 +75,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::resource('infraccion', InfraccionController::class);
 });
+Route::resource('infraccion', InfraccionController::class);
+Route::resource('licencia', LicenciaController::class);
 
 Route::get('consulta', [ConsultaController::class, 'index'])->name('consulta.index');
 

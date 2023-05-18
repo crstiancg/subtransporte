@@ -40,7 +40,7 @@ class InfraccionController extends Controller
                 ->where('cod_placa', '=', $request->search )
                 ->get();
                 //dd($infraccion);
-        return Inertia::render('Infraccion/Index', compact('infraccion'));
+        return Inertia::render('Welcome', compact('infraccion'));
 
     }
 

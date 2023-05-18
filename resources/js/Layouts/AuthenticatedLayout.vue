@@ -36,6 +36,9 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('infraccion.index')" :active="route().current('infraccion.index')">
                                     Infraccion
                                 </NavLink>
+                                <NavLink :href="route('licencia.index')" :active="route().current('licencia.index')">
+                                    Licencia
+                                </NavLink>
                             </div>
                         </div>
 

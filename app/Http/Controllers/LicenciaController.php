@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Licencia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Inertia\Inertia;
 
 class LicenciaController extends Controller
 {
@@ -12,7 +14,7 @@ class LicenciaController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Licencia/Index');
     }
 
     /**
@@ -28,7 +30,12 @@ class LicenciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $placa=$request->search;
+        $infraccion = DB::table('licencias')
+                ->where('cod_placa', '=', $request->search )
+                ->get();
+                //dd($infraccion);
+        return Inertia::render('Licencia/Index', compact('infraccion'));
     }
 
     /**

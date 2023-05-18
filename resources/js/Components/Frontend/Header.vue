@@ -63,7 +63,7 @@ onMounted(() => {
           md:hidden
           hover:bg-gray-100
           focus:outline-none focus:ring-2 focus:ring-gray-200
-          dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600
+          dark:text-gray-900 dark:hover:bg-gray-900 dark:focus:ring-gray-600
         "
         aria-controls="navbar-default"
         aria-expanded="false"
@@ -100,7 +100,7 @@ onMounted(() => {
             md:flex-row md:space-x-8 md:mt-0 md:font-medium md:border-0
           "
         >
-          <!-- <li v-for="(navigation, index) in navigations" :key="index">
+          <li v-for="(navigation, index) in navigations" :key="index">
             <a
               :href="navigation.href"
               class="
@@ -112,12 +112,12 @@ onMounted(() => {
                 rounded
                 dark:text-dark-navy-100
                 hover:text-light-tail-100
-                dark:hover:text-white
+                dark:hover:text-secondary
               "
               aria-current="page"
               >{{ navigation.name }}</a
             >
-          </li> -->
+          </li>
         </ul>
       </div>
     </div>
