@@ -9,10 +9,7 @@ class Infraccion extends Model
 {
 
     use HasFactory;
-    protected $fillable = [
-        'id',
-        'cod_placa',
-    ];
+
 
     public function tipo(){
         return $this->belongsTo(Tipo::class);
@@ -30,6 +27,10 @@ class Infraccion extends Model
     // public function cambiarEstado(){
 
     // }
+    public function papeleta(){
+
+        return $this->belongsTo(Papeleta::class,'papeleta_id');
+    }
 
 
 

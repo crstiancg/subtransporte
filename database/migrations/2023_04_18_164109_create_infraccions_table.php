@@ -13,24 +13,27 @@ return new class extends Migration
     {
         Schema::create('infraccions', function (Blueprint $table) {
             $table->id();
-            $table->string('cod_papeleta')->nullable();
-            $table->string('cod_placa')->nullable();
-            $table->string('dato_conductor')->nullable();
-            $table->string('cod_infraccion')->nullable();
-            $table->string('fecha_infraccion')->nullable();
-            $table->string('hora_infraccion')->nullable();
-            $table->string('licencia')->nullable();
-            $table->string('cod_registro')->nullable();
-            $table->string('observacion')->nullable();
-            $table->string('cip')->nullable();
-            $table->string('lugar')->nullable();
-            $table->string('cuadra')->nullable();
-            $table->string('tipoInf')->nullable();
+            $table->string('papeleta_id',15);
+            // $table->string('cod_papeleta')->nullable();
+            // $table->string('cod_placa')->nullable();
+            // $table->string('dato_conductor')->nullable();
+            // $table->string('cod_infraccion')->nullable();
+            // $table->string('fecha_infraccion')->nullable();
+            // $table->string('hora_infraccion')->nullable();
+            // $table->string('licencia')->nullable();
+            // $table->string('cod_registro')->nullable();
+            // $table->string('observacion')->nullable();
+            // $table->string('cip')->nullable();
+            // $table->string('lugar')->nullable();
+            // $table->string('cuadra')->nullable();
+            // $table->string('tipoInf')->nullable();
             $table->string('estado')->nullable();
-            $table->string('fecha_inicio')->nullable();
-            $table->string('fecha_cierre')->nullable();
+            // $table->string('fecha_inicio')->nullable();
+            // $table->string('fecha_cierre')->nullable();
             $table->string('monto_final')->nullable();
             $table->foreignId('tipo_id')->nullable()->constrained();
+
+            $table->foreign('papeleta_id')->references('cod_papeleta')->on('papeleta');
 
             $table->timestamps();
         });

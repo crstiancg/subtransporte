@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Licencia extends Model
 {
     use HasFactory;
+
+    protected $table = 'tarjeta_circulacion';
+    protected $primaryKey = 'cod_tarjeta_circulacion';
+
 }
