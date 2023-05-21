@@ -20,7 +20,7 @@
             alt="Puno Logo"
           />
         </div>
-        <p class="text-paragraph opacity-80 text-[15px]">
+        <p class="text-paragraph opacity-80 text-[15px] lg:font-bold dark:text-white dark:font-bold">
           &copy; 2023 Transportes. All right reserved.
         </p>
       </div>

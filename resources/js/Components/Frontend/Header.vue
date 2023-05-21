@@ -4,8 +4,8 @@ const showMobileMenu = ref("false");
 const scrollBg = ref(false);
 
 const navigations = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
+  { name: "Infracción", href: "infraccion" },
+  { name: "Licencia", href: "licencias" },
 ];
 const setScrollBg = (value) => {
   scrollBg.value = value;
