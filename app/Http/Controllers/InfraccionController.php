@@ -17,7 +17,7 @@ class InfraccionController extends Controller
     {
         $monto = env('UIT',4950);
 
-        return Inertia::render('Infraccion/Index');
+        return Inertia::render('Infraccion');
     }
 
     /**
@@ -40,7 +40,7 @@ class InfraccionController extends Controller
                 ->where('cod_placa', '=', $request->search )
                 ->get();
                 //dd($infraccion);
-        return Inertia::render('Welcome', compact('infraccion'));
+        return Inertia::render('Infraccion', compact('infraccion'));
 
     }
 

@@ -1,30 +1,16 @@
 <template>
-    <Head title="Infracción" />
-    <AuthenticatedLayout>
-      <template #header>
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-          Infracción
-        </h2>
-      </template>
-  
-      <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <!-- Buton Create -->
-  
-          <div
-            class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg"
-          >
-            <div class="p-6 text-gray-900 dark:text-gray-100">
-              You're logged in!
-            </div>
-          </div>
-  
+  <Head title="Infracción" />
+  <AuthenticatedLayout>
+    <template #header>
+      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        Infracción
+      </h2>
+    </template>
+
+    <div class="py-12">
+      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="lg:grid justify-items-center m-2">
           <form @submit.prevent="consultar" class="py-4">
-            <label
-              for="default-search"
-              class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-              >Search</label
-            >
             <div class="relative">
               <div
                 class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
@@ -49,86 +35,123 @@
                 type="search"
                 id="default-search"
                 v-model="form.search"
-                class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="block w-full lg:w-80 p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Ingrese una placa"
               />
               <button
                 type="submit"
                 class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
-                Search
+                Buscar
               </button>
             </div>
           </form>
-  
-          <div class="relative overflow-x-auto py-4" v-if="licencia ? true :  hidden">
-            <table
-              class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
-            >
-              <thead
-                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+        </div>
+
+        <div
+          class="relative overflow-x-auto py-4"
+          v-if="licencia ? true : hidden"
+        >
+          <!-- probando -->
+          <div
+            id="alert-additional-content-3"
+            class="grid justify-items-center p-4 mb-4 mt-4 text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800 lg:m-full m-2"
+            role="alert"
+            v-for="licencia in licencia"
+            :key="licencia.id"
+          >
+            <div class="flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
               >
-                <tr>
-                  <th scope="col" class="px-6 py-3">Usuario</th>
-                  <th scope="col" class="px-6 py-3">Placa</th>
-                  <th scope="col" class="px-6 py-3">Papeleta</th>
-                  <th scope="col" class="px-6 py-3">Licencia</th>
-                  <th scope="col" class="px-6 py-3">Monto</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="licencia in licencia" :key="licencia.id"
-                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                >
-  
-                <td class="px-6 py-4">{{ licencia.dato_conductor }}</td>
-                  <td
-                    scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >{{ licencia.cod_placa }}
-                  </td>
-                  <td class="px-6 py-4">{{ licencia.cod_papeleta }}</td>
-                  <td class="px-6 py-4">{{ licencia.licencia }}</td>
-                  <td class="px-6 py-4">{{ licencia.monto_final }}</td>
-  
-                </tr>
-              </tbody>
-            </table>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+
+              <span class="sr-only">Info</span>
+              <h3 class="text-lg font-medium mx-2">Vehiculo Autorizado</h3>
+            </div>
+            <div class="mt-2 mb-4 text-sm">
+              <div>
+                <h1 class="text-5xl font-bold">{{ licencia.cod_empresa }}</h1>
+                <!-- <ul class="mt-1.5 ml-4 list-disc list-inside">
+                  <li class="text-xl font-bold dark:text-neutral-200">Licencia Ruc - <span class="font-semibold dark:text-emerald-500">{{ licencia.ruc }}</span></li>
+                  <li class="text-xl font-bold dark:text-neutral-200">Licencia Representante - <span class="font-semibold dark:text-emerald-500">{{ licencia.ruc }}</span></li>
+                  <li class="text-xl font-bold dark:text-neutral-200">Licencia Razon Social - <span class="font-semibold dark:text-emerald-500">{{ licencia.ruc }}</span></li>
+                </ul> -->
+              </div>
+            </div>
           </div>
-          <div class="text-red-700" v-if="licencia == 0"> No se encontrado ningun registro en la Base de datos</div>
+          <!-- fin -->
+        </div>
+        <div v-if="licencia == 0">
+          <div
+            id="alert-additional-content-2"
+            class="grid justify-items-center mt-4 p-4 mb-4 m-2 text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+            role="alert"
+          >
+            <div class="flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 9v3.75m0-10.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.249-8.25-3.286zm0 13.036h.008v.008H12v-.008z"
+                />
+              </svg>
+
+              <span class="sr-only">Info</span>
+              <h3 class="text-2xl font-medium mx-4">Vehículo no autorizado</h3>
+            </div>
+          </div>
         </div>
       </div>
-    </AuthenticatedLayout>
-  </template>
+    </div>
+  </AuthenticatedLayout>
+</template>
   
   <script setup>
-  import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-  import { Head, Link, useForm, router } from "@inertiajs/vue3";
-  import { ref, onMounted, watch } from "vue";
-  import TextInput from "@/Components/TextInput.vue";
-  
-  defineProps({
-    licencia: Object,
-  });
-  
-  // const input = ref(null);
-  // const button = ref("hola");
-  
-  const form = useForm({
-    search: "",
-  });
-  
-  // onMounted(() => {
-  //   console.log("holaaa xd ");
-  // });
-  
-  // watch(input, () => {
-  //   console.log(input.value);
-  // });
-  
-  const consultar = () => {
-    form.post(route("licencia.store"));
-    // console.log(props);
-  };
-  </script>
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import { Head, useForm, router } from "@inertiajs/vue3";
+import { ref, onMounted, watch } from "vue";
+// import TextInput from "@/Components/TextInput.vue";
+
+defineProps({
+  licencia: Object,
+});
+
+// const input = ref(null);
+// const button = ref("hola");
+
+const form = useForm({
+  search: "",
+});
+
+// onMounted(() => {
+//   console.log("holaaa xd ");
+// });
+
+// watch(input, () => {
+//   console.log(input.value);
+// });
+
+const consultar = () => {
+  form.post(route("licencias.store"));
+  // console.log(props);
+};
+</script>
   

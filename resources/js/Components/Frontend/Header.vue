@@ -6,9 +6,6 @@ const scrollBg = ref(false);
 const navigations = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
-  { name: "Portfolio", href: "#portfolio" },
-  { name: "Services", href: "#services" },
-  { name: "Contact", href: "#contact" },
 ];
 const setScrollBg = (value) => {
   scrollBg.value = value;
@@ -22,7 +19,7 @@ onMounted(() => {
 </script>
 <template>
   <nav
-    class="w-full fixed z-20 border-gray-200 px-2 sm:px-4 py-2.5 rounded"
+    class="w-full fixed z-50 bg-white px-2 sm:px-4 py-2.5 lg:shadow-lg shadow-md dark:bg-gray-800"
     :class="{
       'bg-light-primary dark:bg-dark-primary': scrollBg,
       'bg-white dark:bg-slate-800': !scrollBg,
@@ -36,7 +33,7 @@ onMounted(() => {
         <img
           src="https://portal.munipuno.gob.pe/sites/default/files/LOGO%20MPP%202022_2.png"
           class="mr-3 h-6 sm:h-9"
-          alt="Laraveller Logo"
+          alt="Puno Logo"
         />
         <span
           class="
@@ -46,7 +43,7 @@ onMounted(() => {
             whitespace-nowrap
             dark:text-white
           "
-          >Municipalidad - cd Puno</span
+          >Gerencia de Transportes</span
         >
       </a>
       <button
@@ -63,7 +60,7 @@ onMounted(() => {
           md:hidden
           hover:bg-gray-100
           focus:outline-none focus:ring-2 focus:ring-gray-200
-          dark:text-gray-900 dark:hover:bg-gray-900 dark:focus:ring-gray-600
+          dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600
         "
         aria-controls="navbar-default"
         aria-expanded="false"
@@ -110,9 +107,9 @@ onMounted(() => {
                 pl-3
                 text-light-tail-500
                 rounded
-                dark:text-dark-navy-100
+                dark:text-white
                 hover:text-light-tail-100
-                dark:hover:text-secondary
+                dark:hover:text-white
               "
               aria-current="page"
               >{{ navigation.name }}</a

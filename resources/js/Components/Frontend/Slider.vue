@@ -4,13 +4,11 @@
   <section
     id="home"
     class="
-      lg:h-[85vh]
+      lg:h-[100vh]
       flex
       items-center
       bg-light-primary
       dark:bg-dark-primary
-      py-32
-      lg:py-0
       overflow-hidden
     "
   >

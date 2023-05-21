@@ -14,7 +14,7 @@ class LicenciaController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Licencia/Index');
+        return Inertia::render('Licencia');
     }
 
     /**
@@ -31,11 +31,11 @@ class LicenciaController extends Controller
     public function store(Request $request)
     {
         $placa=$request->search;
-        $infraccion = DB::table('licencias')
-                ->where('cod_placa', '=', $request->search )
+        $licencia = DB::table('licencias')
+                ->where('cod_empresa', '=', $request->search )
                 ->get();
-                //dd($infraccion);
-        return Inertia::render('Licencia/Index', compact('infraccion'));
+                //dd($licencia);
+        return Inertia::render('Licencia', compact('licencia'));
     }
 
     /**
