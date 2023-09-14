@@ -1,8 +1,9 @@
 <script setup>
 import Fronted from "@/Layouts/Frontend.vue";
-import { Head, useForm, router } from "@inertiajs/vue3";
+import { useForm, Link } from "@inertiajs/vue3";
 import { ref, onMounted, watch } from "vue";
 // import TextInput from "@/Components/TextInput.vue";
+// import { Head, , useForm } from '@inertiajs/vue3';
 
 defineProps({
   licencia: Object,
@@ -27,11 +28,12 @@ const consultar = () => {
   form.post(route("licencias.store"));
   // console.log(props);
 };
+
 </script>
       
 <template>
   <Fronted>
-    <Section class="w-full mx-auto px-4 sm:px-6 lg:px-8 pb-24 py-40 h-[50vh]">
+    <Section class="w-full mx-auto px-4 sm:px-6 lg:px-8 pb-24 py-20 h-[50vh]">
       <!-- <div
         class="bg-red-300 dark:bg-red-600 overflow-hidden shadow-sm sm:rounded-lg mt-4"
       >
@@ -52,8 +54,14 @@ const consultar = () => {
         <div
           class="bg-white shadow-[6px_0px_24px_0px_#cbd5e0] dark:shadow-sm rounded-lg py-2 dark:bg-gray-800"
         >
-          <div class="lg:grid justify-items-center m-2">
-            <form @submit.prevent="consultar" class="py-4">
+        <div class="lg:grid justify-items-center m-2">
+          <div class="flex items-center justify-end mt-4">
+            <Link
+            :href="route('licencias.index')"
+             class="items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150" 
+             >Limpiar</Link>
+          </div>
+          <form @submit.prevent="consultar" class="py-4">
               <div class="relative">
                 <div
                   class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
@@ -88,6 +96,7 @@ const consultar = () => {
                   Buscar
                 </button>
               </div>
+              
             </form>
           </div>
 
@@ -118,18 +127,19 @@ const consultar = () => {
                     d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-
                 <span class="sr-only">Info</span>
-                <h3 class="text-lg font-medium mx-2">Vehiculo Autorizado</h3>
+                <h3 class="text-lg font-medium mx-2">Vehiculo {{ licencia.estado }}</h3>
               </div>
               <div class="mt-2 mb-4 text-sm">
+                <div class="text-center">
+                  <h1 class="text-5xl font-bold">{{ licencia.placa }}</h1>
+                </div>
                 <div>
-                  <h1 class="text-5xl font-bold">{{ licencia.cod_empresa }}</h1>
-                  <!-- <ul class="mt-1.5 ml-4 list-disc list-inside">
-                  <li class="text-xl font-bold dark:text-neutral-200">Licencia Ruc - <span class="font-semibold dark:text-emerald-500">{{ licencia.ruc }}</span></li>
-                  <li class="text-xl font-bold dark:text-neutral-200">Licencia Representante - <span class="font-semibold dark:text-emerald-500">{{ licencia.ruc }}</span></li>
-                  <li class="text-xl font-bold dark:text-neutral-200">Licencia Razon Social - <span class="font-semibold dark:text-emerald-500">{{ licencia.ruc }}</span></li>
-                </ul> -->
+                  <!-- <ul class="mt-1.5 ml-4 list-disc list-inside"> -->
+                  <p class="text-xl font-bold  dark:text-gray-300 text-gray-800">CONDUCTOR: <span class="font-semibold dark:text-teal-600 text-teal-600">{{ licencia.nombre_conductor }}</span></p>
+                  <p class="text-xl font-bold  dark:text-gray-300 text-gray-800">EMPRESA: <span class="font-semibold dark:text-teal-600 text-teal-600">{{ licencia.empresa }}</span></p>
+                  <p class="text-xl font-bold  dark:text-gray-300 text-gray-800">RUTA: <span class="font-semibold dark:text-teal-600 text-teal-600">{{ licencia.ruta }}</span></p>
+                <!-- </ul> -->
                 </div>
               </div>
             </div>
@@ -198,4 +208,3 @@ const consultar = () => {
     </Section>
   </Fronted>
 </template>
-    

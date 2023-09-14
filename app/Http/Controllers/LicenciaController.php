@@ -32,7 +32,7 @@ class LicenciaController extends Controller
     {
         $placa=$request->search;
         $licencia = DB::table('licencias')
-                ->where('cod_empresa', '=', $request->search )
+                ->where('placa', '=', $request->search )
                 ->get();
                 //dd($licencia);
         return Inertia::render('Licencia', compact('licencia'));

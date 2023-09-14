@@ -13,18 +13,14 @@ return new class extends Migration
     {
         Schema::create('licencias', function (Blueprint $table) {
             $table->id();
-            $table->string('cod_empresa');
-            $table->string('razon_social');
-            $table->string('domicilio');
-            $table->string('ruc');
-            $table->string('representante');
-            $table->string('tipo_servicio');
-            $table->string('tipo_vehiculo');
-            $table->string('nro_vehiculo');
-            $table->string('doc_autorizacion');
-            $table->string('fecha_autorizacion');
+            $table->string('nombre_conductor');
+            // $table->string('razon_social');
+            // $table->string('domicilio');
+            $table->string('ruta');
+            $table->string('placa');
+            $table->string('codigo');
+            $table->string('empresa');
             $table->enum('estado', ['autorizado', 'no_autorizado'])->default('autorizado');
-
             $table->timestamps();
         });
     }

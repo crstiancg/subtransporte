@@ -5,24 +5,14 @@ defineProps({
   infraccion: Object,
 });
 
-// const input = ref(null);
-// const button = ref("hola");
-
 const form = useForm({
   search: "",
 });
 
-// onMounted(() => {
-//   console.log("holaaa xd ");
-// });
-
-// watch(input, () => {
-//   console.log(input.value);
-// });
 
 const consultar = () => {
   form.post(route("infraccion.store"));
-  // console.log(props);
+  
 };
 </script>
 <template>
@@ -181,4 +171,4 @@ const consultar = () => {
       </div>
     </Section>
   </Fronted>
-</template>
+</template>npm 
