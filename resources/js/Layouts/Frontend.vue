@@ -6,10 +6,10 @@ import Footer from "@/Components/Frontend/Footer.vue";
   <div class="bg-white dark:bg-slate-900">
     <!-- Header -->
     <Header/>
-    <main class=" min-h-screen">
+    <main class="h-screen">
       <slot/>
     </main>
-    <!-- Footer -->
     <Footer/>
+    <!-- Footer -->
   </div>
 </template>

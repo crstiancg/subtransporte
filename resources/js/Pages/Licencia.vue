@@ -46,7 +46,7 @@ const consultar = () => {
       <h1
         class="font-extrabold dark:text-gray-100 text-4xl text-center mt-10 mb-6"
       >
-        Búsqueda de Licencia
+        Autorización para prestar servicios de transporte público
       </h1>
 
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
