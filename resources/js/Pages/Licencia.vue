@@ -46,7 +46,7 @@ const consultar = () => {
       <h1
         class="font-extrabold dark:text-gray-100 text-4xl text-center mt-10 mb-6"
       >
-        Autorización para prestar servicios de transporte público
+        Vehículo Autorizado Gtsv
       </h1>
 
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -128,17 +128,17 @@ const consultar = () => {
                   />
                 </svg>
                 <span class="sr-only">Info</span>
-                <h3 class="text-lg font-medium mx-2">Vehiculo {{ licencia.estado }}</h3>
+                <h3 class="lg:text-3xl text-lg font-medium mx-2">VEHICULO AUTORIZADO</h3>
               </div>
               <div class="mt-2 mb-4 text-sm">
                 <div class="text-center">
-                  <h1 class="text-5xl font-bold">{{ licencia.placa }}</h1>
+                  <h1 class="font-bold lg:text-5xl text-3xl">{{ licencia.placa }} - {{licencia.codigo}}</h1>
                 </div>
                 <div>
                   <!-- <ul class="mt-1.5 ml-4 list-disc list-inside"> -->
-                  <p class="text-xl font-bold  dark:text-gray-300 text-gray-800">CONDUCTOR: <span class="font-semibold dark:text-teal-600 text-teal-600">{{ licencia.nombre_conductor }}</span></p>
-                  <p class="text-xl font-bold  dark:text-gray-300 text-gray-800">EMPRESA: <span class="font-semibold dark:text-teal-600 text-teal-600">{{ licencia.empresa }}</span></p>
-                  <p class="text-xl font-bold  dark:text-gray-300 text-gray-800">RUTA: <span class="font-semibold dark:text-teal-600 text-teal-600">{{ licencia.ruta }}</span></p>
+                  <p class="lg:text-xl font-bold  dark:text-gray-300 text-gray-800">CONDUCTOR: <span class="font-semibold dark:text-teal-600 text-teal-600 lg:text-xl  text-xs">{{ licencia.nombre_conductor }}</span></p>
+                  <p class="lg:text-xl font-bold  dark:text-gray-300 text-gray-800">EMPRESA: <span class="font-semibold dark:text-teal-600 text-teal-600 lg:text-xl  text-xs">{{ licencia.empresa }}</span></p>
+                  <p class="lg:text-xl font-bold  dark:text-gray-300 text-gray-800">DIRECCIÓN: <span class="font-semibold dark:text-teal-600 text-teal-600 lg:text-xl  text-xs">{{ licencia.ruta }}</span></p>
                 <!-- </ul> -->
                 </div>
               </div>
@@ -168,8 +168,8 @@ const consultar = () => {
                 </svg>
 
                 <span class="sr-only">Info</span>
-                <h3 class="text-2xl font-medium mx-4">
-                  Vehículo no autorizado
+                <h3 class="lg:text-3xl text-lg font-medium mx-4">
+                  VEHICULO NO AUTORIZADO 
                 </h3>
               </div>
             </div>
@@ -180,7 +180,7 @@ const consultar = () => {
           class="bg-gray-800 dark:bg-gray-800 shadow-[4px_1px_5px_1px_#a0aec0] dark:shadow-sm rounded-lg mt-4"
         >
           <div
-            class="p-5 -mt-2 text-center text-sm text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800"
+            class="p-2 text-center text-sm text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800"
             role="alert"
           >
             <svg
@@ -208,3 +208,6 @@ const consultar = () => {
     </Section>
   </Fronted>
 </template>
+<script type="text/javascript">
+document.oncontextmenu = function(){return false;}
+</script>

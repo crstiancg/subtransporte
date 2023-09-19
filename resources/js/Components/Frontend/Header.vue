@@ -22,7 +22,7 @@ onMounted(() => {
 <template>
   <Head title="Gerencia de Transporte" />
   <nav
-    class="w-full fixed z-50 bg-white px-2 sm:px-4 py-2.5 lg:shadow-lg shadow-md dark:bg-gray-800"
+    class="w-full fixed z-10 bg-white px-2 sm:px-4 py-2.5 lg:shadow-lg shadow-md dark:bg-gray-800"
     :class="{
       'bg-light-primary dark:bg-dark-primary': scrollBg,
       'bg-white dark:bg-slate-800': !scrollBg,

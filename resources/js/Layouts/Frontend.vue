@@ -3,10 +3,10 @@ import Header from "@/Components/Frontend/Header.vue";
 import Footer from "@/Components/Frontend/Footer.vue";
 </script>
 <template>
-  <div class="bg-white dark:bg-slate-900">
+  <div class="bg-white dark:bg-slate-900 ">
     <!-- Header -->
     <Header/>
-    <main class="h-screen">
+    <main class="h-screen ">
       <slot/>
     </main>
     <Footer/>

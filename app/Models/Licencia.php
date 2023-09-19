@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Licencia extends Model
 {
     use HasFactory;
+    
+    protected $fillable = ['id','nombre_conductor','estado'];
 }

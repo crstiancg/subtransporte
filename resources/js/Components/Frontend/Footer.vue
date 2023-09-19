@@ -1,8 +1,8 @@
 <script setup>
 </script>
 <template>
-  <footer class="bg-light-secondary dark:bg-gray-800 py-10 shadow-[0px_-12px_20px_0px_#00000020] bg-gray-100 mt-40">
-    <div class="container mx-auto">
+  <footer class="bg-light-secondary dark:bg-gray-800 py-10 shadow-[0px_-12px_20px_0px_#00000020] bg-gray-100 mt-60">
+    <div class="container">
       <div
         class="
           flex flex-col

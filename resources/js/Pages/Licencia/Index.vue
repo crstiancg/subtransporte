@@ -1,157 +1,101 @@
+<script setup>
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import { Head, useForm, Link } from "@inertiajs/vue3";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
+import { ref } from "vue";
+const props = defineProps({
+  licencias: Object,
+});
+
+// const estado = ref('autorizado');
+// const form = useForm({
+//   estado: estado.value,
+//   // nombre_conductor: ""
+// });
+
+// const autorizar = (licencia) => {
+//   // licencia.estado = estado.value,
+//   form.put(route('test.update', licencia.id),{
+//     // nombre_conductor: licencia.nombre_conductor,
+//     // estado: estado.value
+//   })
+// }
+
+</script>
 <template>
-  <Head title="Infracción" />
+  <Head title="Vehiculos" />
   <AuthenticatedLayout>
     <template #header>
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Infracción
-      </h2>
-    </template>
-
-    <div class="py-12">
-      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="lg:grid justify-items-center m-2">
-          <form @submit.prevent="consultar" class="py-4">
-            <div class="relative">
-              <div
-                class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  ></path>
-                </svg>
-              </div>
-              <input
-                type="search"
-                id="default-search"
-                v-model="form.search"
-                class="block w-full lg:w-80 p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Ingrese una placa"
-              />
-              <button
-                type="submit"
-                class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Buscar
-              </button>
-            </div>
-          </form>
-        </div>
-
-        <div
-          class="relative overflow-x-auto py-4"
-          v-if="licencia ? true : hidden"
-        >
-          <!-- probando -->
-          <div
-            id="alert-additional-content-3"
-            class="grid justify-items-center p-4 mb-4 mt-4 text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800 lg:m-full m-2"
-            role="alert"
-            v-for="licencia in licencia"
-            :key="licencia.id"
-          >
-            <div class="flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-
-              <span class="sr-only">Info</span>
-              <h3 class="text-lg font-medium mx-2">Vehiculo Autorizado</h3>
-            </div>
-            <div class="mt-2 mb-4 text-sm">
-              <div>
-                <h1 class="text-5xl font-bold">{{ licencia.cod_empresa }}</h1>
-                <!-- <ul class="mt-1.5 ml-4 list-disc list-inside">
-                  <li class="text-xl font-bold dark:text-neutral-200">Licencia Ruc - <span class="font-semibold dark:text-emerald-500">{{ licencia.ruc }}</span></li>
-                  <li class="text-xl font-bold dark:text-neutral-200">Licencia Representante - <span class="font-semibold dark:text-emerald-500">{{ licencia.ruc }}</span></li>
-                  <li class="text-xl font-bold dark:text-neutral-200">Licencia Razon Social - <span class="font-semibold dark:text-emerald-500">{{ licencia.ruc }}</span></li>
-                </ul> -->
-              </div>
-            </div>
-          </div>
-          <!-- fin -->
-        </div>
-        <div v-if="licencia == 0">
-          <div
-            id="alert-additional-content-2"
-            class="grid justify-items-center mt-4 p-4 mb-4 m-2 text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
-            role="alert"
-          >
-            <div class="flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 9v3.75m0-10.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.249-8.25-3.286zm0 13.036h.008v.008H12v-.008z"
-                />
-              </svg>
-
-              <span class="sr-only">Info</span>
-              <h3 class="text-2xl font-medium mx-4">Vehículo no autorizado</h3>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        Lista de vehículos en circulación</h2>
+  </template>
+  <div class="py-12">
+    <div class="flex justify-end mr-32">
+      <Link :href="route('circulacion.create')" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">Registrar</Link>
     </div>
+    <div class=" max-w-7xl mx-auto overflow-hidden rounded-lg border border-gray-200 dark:border-gray-600 shadow-md m-5">
+    <table class="w-full border-collapse bg-white dark:bg-gray-800 text-left text-sm text-gray-500 dark:border-gray-600">
+      <thead class="bg-gray-50 dark:bg-gray-800">
+        <tr>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900 dark:text-white">Conductor</th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900 dark:text-white">Estado</th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900 dark:text-white">Empresa</th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900 dark:text-white">Placa</th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900 dark:text-white"></th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 border-t border-gray-100 dark:border-gray-600">
+        <tr class="hover:bg-gray-50 dark:hover:bg-slate-700" v-for="licencia in licencias" :key="licencia.id">
+          <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
+            <!-- <div class="relative h-10 w-10">
+              <img
+                class="h-full w-full rounded-full object-cover object-center"
+                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                alt=""
+              />
+              <span class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
+            </div> -->
+            <div class="text-sm">
+              <div class="font-medium text-gray-700 dark:text-white">{{ licencia.nombre_conductor }}</div>
+              <div class="text-gray-400 dark:text-white">{{ licencia.empresa }}</div>
+            </div>
+          </th>
+          <td class="px-6 py-4 space-x-4">
+            <span v-if="licencia.estado == 'autorizado'"
+              class="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-xs font-semibold text-green-600"
+            >
+              <span class="h-1.5 w-1.5 rounded-full bg-green-600"></span>
+              AUTORIZADO
+            </span>
+            <span v-else-if="licencia.estado == 'no_autorizado'"
+              class="inline-flex items-center gap-1 rounded-full bg-red-50 px-2 py-1 text-xs font-semibold text-red-600"
+            >
+              <span class="h-1.5 w-1.5 rounded-full bg-red-600"></span>
+              NO AUTORIZADO
+            </span>
+          </td>
+          <td class="px-6 py-4">{{ licencia.empresa }}</td>
+          <td class="px-6 py-4">{{ licencia.placa }}</td>
+          <td class="px-6 py-4 space-x-4">
+            <Link v-if="licencia.estado == 'no_autorizado'" :href="route('circulacion.estado', licencia.id)" class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-green-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-green-700 dark:hover:bg-green-400 focus:bg-gray-700 dark:focus:bg-green active:bg-gray-900 dark:active:bg-green-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">Autorizar</Link>
+            <Link v-if="licencia.estado == 'autorizado'" :href="route('circulacion.estado', licencia.id)" class="inline-flex items-center px-4 py-2 bg-red-600 dark:bg-red-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-red-800 uppercase tracking-widest hover:bg-red-700 dark:hover:bg-red-400 focus:bg-red-700 dark:focus:bg-red active:bg-red-600 dark:active:bg-red-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-red-800 transition ease-in-out duration-150">No Autorizar</Link>
+            <!-- <div class="flex justify-end gap-4" v-if="licencia.estado == 'no_autorizado'">
+              <Link class="btn btn-sm btn-info m-2" :href="route('circulacion.estado', licencia.id)">{{licencia.estado}}</Link>
+            </div>
+            <div class="flex justify-end gap-4" v-else-if="licencia.estado == 'autorizado'">
+              <Link class="btn btn-sm btn-info m-2" :href="route('circulacion.estado', licencia.id)">{{ licencia.estado }}</Link>
+            </div> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- <div class="mt-6">
+    {{ licencias.links() }}
+</div> -->
+</div>
   </AuthenticatedLayout>
 </template>
   
-  <script setup>
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head, useForm, router } from "@inertiajs/vue3";
-import { ref, onMounted, watch } from "vue";
-// import TextInput from "@/Components/TextInput.vue";
 
-defineProps({
-  licencia: Object,
-});
-
-// const input = ref(null);
-// const button = ref("hola");
-
-const form = useForm({
-  search: "",
-});
-
-// onMounted(() => {
-//   console.log("holaaa xd ");
-// });
-
-// watch(input, () => {
-//   console.log(input.value);
-// });
-
-const consultar = () => {
-  form.post(route("licencias.store"));
-  // console.log(props);
-};
-</script>
   

@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\CirculacionController;
 use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\InfraccionController;
 use App\Http\Controllers\LicenciaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestController;
 use App\Jobs\TestJob;
 use App\Models\Infraccion;
 use Illuminate\Foundation\Application;
@@ -75,6 +77,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('circulacion', CirculacionController::class);
+    Route::resource('test', TestController::class);
+    Route::get('circulacion/{circulacion}', [CirculacionController::class,'estado'])->name('circulacion.estado');
 });
 Route::resource('infraccion', InfraccionController::class)->names('infraccion');
 Route::resource('licencias', LicenciaController::class)->names('licencias');
