@@ -14,8 +14,8 @@ class CirculacionController extends Controller
     
     public function index():Response
     {
-        $licencias =  Licencia::select('*')->where('estado','no_autorizado')->take(10)->get();
-        // dd($licencias)
+        $licencias =  Licencia::select('*')->get();
+        // dd($licencias); ->where('estado','no_autorizado')
         return Inertia::render('Licencia/Index', compact('licencias'));
     }
 

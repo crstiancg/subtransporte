@@ -78,7 +78,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('circulacion', CirculacionController::class);
-    Route::resource('test', TestController::class);
+    // Route::resource('test', TestController::class);
     Route::get('circulacion/{circulacion}', [CirculacionController::class,'estado'])->name('circulacion.estado');
 });
 Route::resource('infraccion', InfraccionController::class)->names('infraccion');
