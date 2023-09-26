@@ -5,6 +5,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
 import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import { ref } from 'vue';
 const form = useForm({
     nombre_conductor: "",
     ruta: "",
@@ -13,6 +14,8 @@ const form = useForm({
     empresa: "",
     estado: "",
 });
+
+const max = ref(6);
 
 const save = () => {
     form.post(route('circulacion.store'));
@@ -34,28 +37,29 @@ const save = () => {
                     >
                       <div class="p-4">
                         <div class="mb-6">
-                          <InputLabel>Nombre del conductor</InputLabel>
-                          <TextInput class="w-full" v-model="form.nombre_conductor"></TextInput>
+                          <InputLabel>Nombre del propietario</InputLabel>
+                          <TextInput class="w-full border-gray-300" v-model="form.nombre_conductor"></TextInput>
                           <InputError class="mt-2" :message="form.errors.nombre_conductor" />
                         </div>
                         <div class="mb-6">
                           <InputLabel>Dirección</InputLabel>
-                          <TextInput class="w-full" v-model="form.ruta"></TextInput>
+                          <TextInput class="w-full border-gray-300" v-model="form.ruta"></TextInput>
                           <InputError class="mt-2" :message="form.errors.ruta" />
                         </div>
                         <div class="mb-6">
                           <InputLabel>Placa del vehiculo</InputLabel>
-                          <TextInput class="w-full" v-model="form.placa" maxlenght="8"></TextInput>
+                          <TextInput class="w-full border-gray-300" :maxlength="max" v-model="form.placa"  placeholder="ASD903"></TextInput>
+                          <span class="text-red-300">Máximo de caracteres 6</span>
                           <InputError class="mt-2" :message="form.errors.placa" />
                         </div>
                         <div class="mb-6">
                             <InputLabel>Nombre de la empresa</InputLabel>
-                            <TextInput class="w-full" v-model="form.empresa"></TextInput>
+                            <TextInput class="w-full border-gray-300" v-model="form.empresa"></TextInput>
                             <InputError class="mt-2" :message="form.errors.empresa" />
                           </div>
                         <div class="mb-6">
                           <InputLabel>Codigo de empresa</InputLabel>
-                          <TextInput class="w-full" v-model="form.codigo"></TextInput>
+                          <TextInput class="w-full border-gray-300" v-model="form.codigo"></TextInput>
                           <InputError class="mt-2" :message="form.errors.codigo" />
                         </div>
                         <div class="mt-6 flex space-x-4 justify-end">

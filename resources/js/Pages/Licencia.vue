@@ -136,7 +136,7 @@ const consultar = () => {
                 </div>
                 <div>
                   <!-- <ul class="mt-1.5 ml-4 list-disc list-inside"> -->
-                  <p class="lg:text-xl font-bold  dark:text-gray-300 text-gray-800">CONDUCTOR: <span class="font-semibold dark:text-teal-600 text-teal-600 lg:text-xl  text-xs">{{ licencia.nombre_conductor }}</span></p>
+                  <p class="lg:text-xl font-bold  dark:text-gray-300 text-gray-800">PROPIETARIO: <span class="font-semibold dark:text-teal-600 text-teal-600 lg:text-xl  text-xs">{{ licencia.nombre_conductor }}</span></p>
                   <p class="lg:text-xl font-bold  dark:text-gray-300 text-gray-800">EMPRESA: <span class="font-semibold dark:text-teal-600 text-teal-600 lg:text-xl  text-xs">{{ licencia.empresa }}</span></p>
                   <p class="lg:text-xl font-bold  dark:text-gray-300 text-gray-800">DIRECCIÓN: <span class="font-semibold dark:text-teal-600 text-teal-600 lg:text-xl  text-xs">{{ licencia.ruta }}</span></p>
                 <!-- </ul> -->

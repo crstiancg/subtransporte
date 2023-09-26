@@ -6,6 +6,7 @@ use App\Http\Requests\CreateCirculacionRequest;
 use App\Models\Licencia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -14,7 +15,7 @@ class CirculacionController extends Controller
     
     public function index():Response
     {
-        $licencias =  Licencia::select('*')->get();
+        $licencias =  Licencia::select('*')->orderBy('id','desc')->get();
         // dd($licencias); ->where('estado','no_autorizado')
         return Inertia::render('Licencia/Index', compact('licencias'));
     }
@@ -30,21 +31,15 @@ class CirculacionController extends Controller
     {
         $circulacion =  new Licencia();
 
-        $circulacion->nombre_conductor = $request->nombre_conductor;
-        $circulacion->ruta = $request->ruta;
-        $circulacion->placa = $request->placa;
-        $circulacion->codigo = $request->codigo;
-        $circulacion->empresa = $request->empresa;
+        $circulacion->nombre_conductor = Str::upper($request->nombre_conductor);
+        $circulacion->ruta = Str::upper($request->ruta);
+        $circulacion->placa = Str::upper($request->placa);
+        $circulacion->codigo = Str::upper($request->codigo);
+        $circulacion->empresa = Str::upper($request->empresa);
 
         $circulacion->save();
 
         return Redirect::route('circulacion.index');
-    }
-
-
-    public function show(string $id)
-    {
-        //
     }
 
   
@@ -72,10 +67,10 @@ class CirculacionController extends Controller
     //     return Redirect::back();
     // }
 
-    public function estado($licencia)
+    public function estado($id)
     {
 
-        $estado = Licencia::find($licencia);
+        $estado = Licencia::find($id);
         // $licencia->nombre_conductor = "";
         // $licencia->ruta = "";
         // $licencia->placa = "";
@@ -91,8 +86,6 @@ class CirculacionController extends Controller
         // ]);
         if($estado->estado == 'no_autorizado'){
             $estado->estado = 'autorizado';
-        }else {
-            $estado->estado = 'no_autorizado';
         }
 
         // $licencia->save();
@@ -101,5 +94,15 @@ class CirculacionController extends Controller
 
 
         return Redirect::back();
+    }
+
+    public function noautorizar($licencia){
+        $estado = Licencia::find($licencia);
+        if($estado->estado == 'autorizado'){
+            $estado->estado = 'no_autorizado';
+        }
+        $estado->save();
+        return Redirect::back();
+
     }
 }

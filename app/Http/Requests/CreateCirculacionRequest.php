@@ -24,7 +24,7 @@ class CreateCirculacionRequest extends FormRequest
         return [
             'nombre_conductor' => 'required',
             'ruta' => 'required',
-            'placa' => 'required',
+            'placa' => 'required|max:6',
             'codigo' => 'required',
             'empresa' => 'required',
         ];

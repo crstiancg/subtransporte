@@ -35,11 +35,11 @@ const customButtons= ref([{
         action: 'editar',
         buttonClasses: "px-2 py-1 text-sm rounded-md bg-green-500 text-white hover:bg-green-600",
     },
-    // {
-    //     label: "Eliminar",
-    //     action: 'eliminar',
-    //     buttonClasses: "px-2 py-1 text-sm rounded-md bg-red-500 text-white hover:bg-red-600",
-    // },
+    {
+        label: "No Autorizar",
+        action: 'eliminar',
+        buttonClasses: "px-2 py-1 text-sm rounded-md bg-red-500 text-white hover:bg-red-600",
+    },
     // Puedes agregar más botones personalizados con clases de estilo personalizadas
 ]);
 
@@ -51,6 +51,9 @@ const form = useForm({
 
 const autorizar = (licencia) => {
   form.get(route('circulacion.estado', licencia));
+}
+const noautorizar = (licencia) => {
+  form.get(route('circulacion.noautorizar', licencia));
 }
 
 
@@ -81,13 +84,15 @@ const autorizar = (licencia) => {
     <div class="flex justify-end mr-32">
       <Link :href="route('circulacion.create')" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">Registrar</Link>
     </div>
-    <div class="max-w-7xl mx-auto overflow-hidden rounded-lg border border-gray-200 dark:border-gray-600 shadow-md m-5">
-      <Datatable 
+    <div class="max-w-7xl mx-auto overflow-hidden rounded-lg border border-gray-200 dark:border-gray-600 shadow-md m-5 p-6">
+      <Datatable
+      :numerarRow="true" 
       :table-keys-headers="tablekeysheaders" 
       :tableData="licencias"
       :custom-class-colum="customClassColum"
       :customButtons="customButtons"
       @editar="autorizar"
+      @eliminar="noautorizar"
       >
       </Datatable>
 

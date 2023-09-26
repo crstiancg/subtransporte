@@ -182,7 +182,7 @@ const hayValorSearchInputs = computed(() => {
 <template>
   <section class="container mx-auto">
     <!-- Botones -->
-    <div class="sm:flex sm:items-center sm:justify-between">
+    <!-- <div class="sm:flex sm:items-center sm:justify-between">
         <div class="flex items-center mt-4 gap-x-3">
             <button class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-800 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -204,10 +204,10 @@ const hayValorSearchInputs = computed(() => {
                 <span>Add vendor</span>
             </button>
         </div>
-    </div>
+    </div> -->
     <div class="mt-6 md:flex md:items-center md:justify-between">
         <div class="inline-flex overflow-hidden bg-white border divide-x rounded-lg dark:bg-gray-900 rtl:flex-row-reverse dark:border-gray-700 dark:divide-gray-700">
-            <button class="px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 bg-gray-100 sm:text-sm dark:bg-gray-800 dark:text-gray-300">
+            <!-- <button class="px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 bg-gray-100 sm:text-sm dark:bg-gray-800 dark:text-gray-300">
                 View all
             </button>
             <button class="px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 sm:text-sm dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">
@@ -215,8 +215,8 @@ const hayValorSearchInputs = computed(() => {
             </button>
             <button class="px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 sm:text-sm dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">
                 Unmonitored
-            </button>
-            <span class="text-sm m-2 text-gray-800 dark:text-gray-300">{{ len_table }} Datos</span>
+            </button> -->
+            <span class="text-base m-2 text-gray-800 dark:text-gray-300">{{ len_table }} Datos</span>
         </div>
         <div class="flex items-center">
             <button v-if="hayValorSearchInputs" @click="limpiarFiltros" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-blue-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-blue-600 dark:hover:bg-blue-500 dark:bg-blue-600">
@@ -276,7 +276,7 @@ const hayValorSearchInputs = computed(() => {
                                         </div>
                                     </div>
                                 </th>
-                                <th v-if="customButtons" scope="col" class="relative py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <th v-if="customButtons" scope="col" class="relative py-3.5 px-4 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 font-bold">
                                     Acciones
                                 </th>
                             </tr>
@@ -353,9 +353,9 @@ const hayValorSearchInputs = computed(() => {
         </button>
     </div>
     <!-- Aquí mostramos el número total de páginas y la página actual -->
-    <div class="flex items-center justify-center mt-4 text-gray-800 dark:text-gray-300">
+    <!-- <div class="flex items-center justify-center mt-4 text-gray-800 dark:text-gray-300">
         <span class="text-sm">Página {{ currentPage }} de {{ totalPages }} - {{ len_table }} Datos</span>
-    </div>
+    </div> -->
 </section>
 </template>
 <style>
