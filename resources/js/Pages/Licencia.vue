@@ -9,6 +9,8 @@ defineProps({
   licencia: Object,
 });
 
+const max = 6;
+
 // const input = ref(null);
 // const button = ref("hola");
 
@@ -86,8 +88,9 @@ const consultar = () => {
                   type="search"
                   id="default-search"
                   v-model="form.search"
+                  :maxlength="max"
                   class="block w-full lg:w-80 p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Ingrese una placa"
+                  placeholder="Ingrese una placa: AFD708"
                 />
                 <button
                   type="submit"
@@ -96,7 +99,12 @@ const consultar = () => {
                   Buscar
                 </button>
               </div>
-              
+            <!-- <div v-if="form.search.length>=6">
+              <span class="text-red-300 text-sm">El campo puede tener hasta 6 caracteres</span>
+            </div> -->
+            <div v-if="form.search.length>0 && form.search.length <= 5 ">
+              <span class="text-green-300 text-sm">Ingrese su placa en el formato: AKF952</span>
+            </div>
             </form>
           </div>
 
@@ -168,9 +176,13 @@ const consultar = () => {
                 </svg>
 
                 <span class="sr-only">Info</span>
-                <h3 class="lg:text-3xl text-lg font-medium mx-4">
-                  VEHICULO NO AUTORIZADO 
+                <h3 class="font-bold  lg:text-3xl text-lg mx-4">
+                  VEHICULO NO AUTORIZADO
                 </h3>
+              </div>
+              <div class="text-center">
+                <span class="lg:text-4xl text-3xl">{{ form.search }}</span>
+                <!-- <h1 class="font-bold lg:text-4xl text-3xl">{{form.search}}</h1> -->
               </div>
             </div>
           </div>
