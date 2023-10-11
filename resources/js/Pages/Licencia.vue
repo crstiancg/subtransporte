@@ -65,12 +65,12 @@ const consultar = () => {
             <p class="mt-2 text-gray-400">{{ licencia.empresa }}</p>
             <p class="block mt-1 text-lg leading-tight font-medium text-white uppercase">Dirección</p>
             <p class="mt-2 text-gray-400">{{ licencia.ruta }}</p>
-            <div class="flex items-center justify-center p-2 space-x-4 lg:hidden">
-              <button style="margin-right: 20px" class="text-red-500 hover:text-white">
+            <div class="flex items-center justify-center p-2 space-x-4">
+              <Link :href="route('licencias.index')" style="margin-right: 20px" class="text-red-500 hover:text-white">
                 <div class="image">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 7L9.00004 18L3.99994 13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                  <svg width="24px" height="24px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill="#000000" fill-rule="evenodd" d="M8,16 C12.4183,16 16,12.4183 16,8 C16,3.58172 12.4183,0 8,0 C3.58172,0 0,3.58172 0,8 C0,12.4183 3.58172,16 8,16 Z M4.29289,4.29289 C4.68342,3.90237 5.31658,3.90237 5.70711,4.29289 L8,6.58579 L10.2929,4.29289 C10.6834,3.90237 11.3166,3.90237 11.7071,4.29289 C12.0976,4.68342 12.0976,5.31658 11.7071,5.70711 L9.41421,8 L11.7071,10.2929 C12.0976,10.6834 12.0976,11.3166 11.7071,11.7071 C11.3166,12.0976 10.6834,12.0976 10.2929,11.7071 L8,9.41421 L5.70711,11.7071 C5.31658,12.0976 4.68342,12.0976 4.29289,11.7071 C3.90237,11.3166 3.90237,10.6834 4.29289,10.2929 L6.58579,8 L4.29289,5.70711 C3.90237,5.31658 3.90237,4.68342 4.29289,4.29289 Z"></path> </g></svg>
                   </div>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -97,6 +97,13 @@ const consultar = () => {
           <span class="text-3xl font-extrabold text-red-400 uppercase">{{ form.search }}</span>
         </div>
         <p class="text">Mayor información en la Gerencia de Transportes.</p>
+        <div class="flex items-center justify-center p-2 space-x-4">
+          <Link :href="route('licencias.index')" style="margin-right: 20px" class="text-red-500 hover:text-white">
+            <div class="image">
+              <svg width="24px" height="24px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill="#000000" fill-rule="evenodd" d="M8,16 C12.4183,16 16,12.4183 16,8 C16,3.58172 12.4183,0 8,0 C3.58172,0 0,3.58172 0,8 C0,12.4183 3.58172,16 8,16 Z M4.29289,4.29289 C4.68342,3.90237 5.31658,3.90237 5.70711,4.29289 L8,6.58579 L10.2929,4.29289 C10.6834,3.90237 11.3166,3.90237 11.7071,4.29289 C12.0976,4.68342 12.0976,5.31658 11.7071,5.70711 L9.41421,8 L11.7071,10.2929 C12.0976,10.6834 12.0976,11.3166 11.7071,11.7071 C11.3166,12.0976 10.6834,12.0976 10.2929,11.7071 L8,9.41421 L5.70711,11.7071 C5.31658,12.0976 4.68342,12.0976 4.29289,11.7071 C3.90237,11.3166 3.90237,10.6834 4.29289,10.2929 L6.58579,8 L4.29289,5.70711 C3.90237,5.31658 3.90237,4.68342 4.29289,4.29289 Z"></path> </g></svg>
+              </div>
+          </Link>
+        </div>
       </div>
     </div>
   </Fronted>
@@ -107,7 +114,7 @@ const consultar = () => {
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  background-color: #00be9e;
+  background-color: #008fd7;
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
