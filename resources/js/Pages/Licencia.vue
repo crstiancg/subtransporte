@@ -55,9 +55,10 @@ const consultar = () => {
           <div class="p-6" v-for="licencia in licencia"
           :key="licencia.id">
             <div class="text-center">
-              <span class="text-3xl font-extrabold text-green-400">{{ licencia.placa }} - {{licencia.codigo}}</span>
+              <!-- <h3 class="lg:text-2xl text-lg font-medium mx-2 text-green-500 uppercase">VEHÍCULO AUTORIZADO</h3> -->
+              <span class="lg:text-5xl text-3xl font-extrabold text-green-400">{{ licencia.placa }} - {{licencia.codigo}}</span>
             </div>
-            <div class="uppercase tracking-wide text-xl text-green-500 font-semibold text-center">Información del vehiculo</div>
+            <div class="uppercase lg:text-lg text-base text-green-500 font-semibold text-center">INFORMACIÓN DE TARJETA ÚNICA DE CIRCULACIÓN</div>
             <p class="block mt-1 text-lg leading-tight font-medium text-white uppercase">Propietario</p>
             <p class="mt-2 text-gray-400">{{ licencia.nombre_conductor }}</p>
             <p class="block mt-1 text-lg leading-tight font-medium text-white uppercase">Empresa</p>
