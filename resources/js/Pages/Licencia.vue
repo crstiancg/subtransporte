@@ -33,7 +33,7 @@ const consultar = () => {
 
 </script>
 <template>
-  <Head title="GTV" />
+  <Head title="GTVS" />
   <Fronted>
       <div class="relative px-4 pb-0 pt-0 md:pt-[70px] -mt-[150px] md:mt-0">
         <h1 class="max-w-[50rem] sm:max-w-[49rem] px-3 md:px-0 sm:text-5xl md:text-6xl text-4xl font-bold text-center text-gray-50 uppercase">Vehículo Autorizado
