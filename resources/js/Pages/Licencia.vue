@@ -142,7 +142,6 @@ const consultar = () => {
 .card {
   height: 270px;
   background-color: #1E293B;
-  margin: 10px;
   border-radius: 8px;
   box-shadow: 0px 2px 10px #1E293B;
   border: 2px solid #1E293B;
@@ -177,7 +176,7 @@ const consultar = () => {
 
 .card .title {
   width: 100%;
-  margin: 0;
+  margin: 0px;
   text-align: center;
   margin-top: 30px;
   color: white;
