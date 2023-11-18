@@ -6,12 +6,23 @@ use App\Models\Licencia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
+use Throwable;
 
 class LicenciaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // public function render($request, Throwable $e)
+    // {
+    //     $response = parent::render($request, $e);
+
+    //     if ($response->status() === 419) {
+    //         return back()->with([
+    //             'message' => 'The page expired, please try again.',
+    //         ]);
+    //     }
+
+    //     return $response;
+    // }
+
     public function index()
     {
         return Inertia::render('Licencia');

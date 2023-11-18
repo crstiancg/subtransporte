@@ -27,7 +27,9 @@ const form = useForm({
 // });
 
 const consultar = () => {
-  form.post(route("licencias.store"));
+  form.post(route("licencias.store",{
+    onFinish: () => form.reset(),
+  }));
   // console.log(props);
 };
 
@@ -40,7 +42,7 @@ const consultar = () => {
         </h1>
         <h2 class="max-w-[50rem] sm:max-w-[49rem]  z-10 font-semibold text-gray-400 mt-6 text-center px-4 text-lg">Gerencia de Transporte y Seguridad Vial </h2>
       </div>
-      <form @submit.prevent="consultar" 
+      <form @submit.prevent="consultar"
       class="flex relative z-[21] mx-autom mt-8 max-w-[550px] hover:scale-105 w-full shadow-lg bg-gray-300 overflow-visible rounded-full transition-transform focus-visible:ring-sky-400 focus-visible:border-sky-400">
       <input type="text" placeholder="Ingrese una placa" v-model="form.search" :maxlength="max" class="block w-full px-6 pl-10 py-4 pr-2 mr-px font-sans ouline-gray-200 font-normal  text-base border-none focus:ring-0 shadow-sm rounded-s-full bg-gray-300 text-dark-900 placeholder:text-gray-500">
       <button type="submit" class="flex items-center px-5 py-1.5  pr-7 text-base gap-1.5 font-sans font-semibold transition-colors border-none cursor-pointer bg-gray-00 hover:bg-gray-400 text-dark-800 group  rounded-e-full rounded-t-full rounded-s-full pointer "><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-dark-800 transition-colors"><path d="M21 21L14.9497 14.9497M14.9497 14.9497C16.2165 13.683 17 11.933 17 10C17 6.13401 13.866 3 10 3C6.13401 3 3 6.13401 3 10C3 13.866 6.13401 17 10 17C11.933 17 13.683 16.2165 14.9497 14.9497Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Buscar</span></button>
