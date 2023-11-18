@@ -27,40 +27,40 @@ use Illuminate\Support\Facades\Redirect;
 
 
 
-function desc17():bool
-{
-    $fechaIncidente = Carbon::create('2023-05-4 23:26:11.223');
-    $fechaActual = Carbon::now();
+// function desc17():bool
+// {
+//     $fechaIncidente = Carbon::create('2023-05-4 23:26:11.223');
+//     $fechaActual = Carbon::now();
 
-    //echo "hola";
-    return $fechaActual->diffInDays($fechaIncidente)>=5?false:true;
-}
-Route::get('job',function(){
-    $uit = 4950;
-        $bases = Infraccion::where('estado', '=', 'base')->get();
-        foreach ($bases as $base) {
+//     //echo "hola";
+//     return $fechaActual->diffInDays($fechaIncidente)>=5?false:true;
+// }
+// Route::get('job',function(){
+//     $uit = 4950;
+//         $bases = Infraccion::where('estado', '=', 'base')->get();
+//         foreach ($bases as $base) {
 
-            $tipo = $base->tipo;
-            $benefi = $base->tipo->beneficios->sortBy('orden')->first();
-            //dd();
-            $condicion = $base->tipo->beneficios->sortBy('orden')->first()->condicion;
+//             $tipo = $base->tipo;
+//             $benefi = $base->tipo->beneficios->sortBy('orden')->first();
+//             //dd();
+//             $condicion = $base->tipo->beneficios->sortBy('orden')->first()->condicion;
 
-            switch ($condicion) {
-                case "DESC17":
-                    if (desc17()) {
-                        $base->monto_final = ($uit * $tipo->porcentaje_base) * $benefi->descuento;
-                        $base->save();
-                    } else {
-                        $base->estado = "dias";
-                        $base->save();
-                    }
-                    break;
+//             switch ($condicion) {
+//                 case "DESC17":
+//                     if (desc17()) {
+//                         $base->monto_final = ($uit * $tipo->porcentaje_base) * $benefi->descuento;
+//                         $base->save();
+//                     } else {
+//                         $base->estado = "dias";
+//                         $base->save();
+//                     }
+//                     break;
                     
-            }
-        }
+//             }
+//         }
 
-    return response("Fin");
-});
+//     return response("Fin");
+// });
 
 Route::get('/', function () {
     return Redirect::route('licencias.index');
